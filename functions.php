@@ -4,14 +4,20 @@
 	function startit_setup() {
 
 		add_theme_support( 'title-tag' );
+		register_nav_menu( 'main-menu', 'nav-menu' );
+		add_theme_support('post-thumbnails');
 
-		add_theme_support( 'custom-logo', array('height' => 64, 'width' => 78, 'flex-height' => true) );
-
-		register_nav_menu( 'menu', 'nav-menu' );
+		register_nav_menu( 'main-menu', 'nav-menu' );
+		add_image_size ('small', 78, 64, true);
+		add_image_size ('full-size', 1900, 900, true);
+		add_image_size ('portfolio-thumb', 650, 650, true);
+		add_image_size ('blog-thumb', 370, 280, true);
+		add_image_size ('about-thumb', 470, 280, true);
 
 	}
 
 	add_action( 'after_setup_theme', 'startit_setup' );
+
 
 	function startit_scripts() {
 
@@ -28,5 +34,13 @@
 	}
 	add_action( 'wp_enqueue_scripts', 'startit_scripts' );
 
+
+
+	register_nav_menus( array(
+    	'menutop' => __( 'Menu Top' ),
+    	'menubottom' => __( 'Menu Bottom' ),
+	));
+
+	
 
 ?>

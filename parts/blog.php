@@ -1,52 +1,43 @@
+<?php
+/*
+Template Name: Page Blog
+*/
+?>
 <section id="blog" class="blog">
     <div class="container">
         <div class="section-title">
-            <h2>Latest Articles</h2>
-            <p>Lorem ipsum dolor sit, consectet ipsum dolor sit</p>
+            <h2><?php the_field('blog-title'); ?></h2>
+            <p><?php the_field('blog-description'); ?></p>
         </div>
         <div class="row">
+        <?php if( have_rows('blog-repeater') ): ?> 
+            <?php while( have_rows('blog-repeater') ): the_row(); 
+                // vars
+                $postImg = get_sub_field('post-img');
+                $postTitle = get_sub_field('post-title');
+                $postMore = get_sub_field('post-more');
+            ?>
             <div class="col-md-6 col-lg-4">
                 <div class="blog_post">
                     <div class="post_img">
-                        <a href="index.html#"><img src="<?php bloginfo( 'template_url' )?>/images/blog/blog-1.jpg" alt="img"></a>
+                        <?php if($postImg): ?>
+                        <a href="index.html#"><img src="<?php echo $postImg['url']; ?>" alt="img"></a>
+                        <?php endif; ?>
                     </div>
                     <div class="post_content">
                         <div class="post_header">
-                            <h2 class="post_title"><a href="index.html#">Create any idea to make different</a></h2>
-                            <div class="read_more"><a href="index.html#">Go to article</a></div>
+                            <?php if($postTitle): ?>
+                            <h2 class="post_title"><a href="index.html#"><?php echo $postTitle; ?></a></h2>
+                            <?php endif; ?>
+                            <?php if($postMore): ?>
+                            <div class="read_more"><a href="index.html#"><?php echo $postMore; ?></a></div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="blog_post">
-                    <div class="post_img">
-                        <a href="index.html#"><img src="<?php bloginfo( 'template_url' )?>/images/blog/blog-2.jpg" alt="img"></a>
-                    </div>
-                    <div class="post_content">
-                        <div class="post_header">
-                            <h2 class="post_title"><a href="index.html#">Design unique as your passion</a></h2>
-                            <div class="read_more"><a href="index.html#">Go to article</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="blog_post">
-                    <div class="post_img">
-                        <a href="index.html#"><img src="<?php bloginfo( 'template_url' )?>/images/blog/blog-3.jpg" alt="img"></a>
-                    </div>
-                    <div class="post_content">
-                        <div class="post_header">
-                            <h2 class="post_title"><a href="index.html#">Do hard work to be fast & successful</a></h2>
-                            <div class="read_more"><a href="index.html#">Go to article</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <?php endwhile; ?>
+            <?php endif; ?>
         </div>
     </div>
 </section>

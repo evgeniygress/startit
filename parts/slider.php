@@ -1,15 +1,16 @@
-<section id="slider" class="slider_1" style="background-image:url(<?php bloginfo( 'template_url' )?>/images/slider/slider-bg1.jpg)">
+<section id="slider" class="slider_1" style="background-image: url(<?php the_field('background-slider'); ?>);">
     <div class="slider">
         <div class="container">
             <div class="slide-content">
-                <h6 class="sub_heading">Creative Agency Template</h6>
+                <h6 class="sub_heading"><?php the_field('slider-title'); ?></h6>
+                <h6><?php the_field('Background'); ?></h6>
                 <div class="typing_content">
                     <h2 class="heading">
-                        We Are <span class="typed-element">Carrby</span>
+                        <?php the_field('heading'); ?> <span class="typed-element">Carrby</span>
                     </h2>
                     <div class="typed-strings">
-                        <p>Agency</p>
-                        <p>Company</p>
+                        <p><?php the_field('first-string'); ?></p>
+                        <p><?php the_field('second-string'); ?></p>
                     </div>
                 </div>
             </div>

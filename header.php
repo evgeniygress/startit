@@ -22,18 +22,11 @@
                     <div class="container">
                         <nav id="flexmenu">
                             <div class="logo">
-                                <a href="#"><?php the_custom_logo();?></a>
+                                <a href="#"><img src="<?php the_field('header-logo'); ?>" alt="logo"></a>
                             </div>
                             <div class="nav-inner">
                                 <div id="mobile-toggle" class="mobile-btn"></div>
-                                <ul class="main-menu">
-                                    <li class="menu-item"><a class="active" href="index.html#slider">Home</a></li>
-                                    <li class="menu-item"><a href="index.html#services">Services</a></li>
-                                    <li class="menu-item"><a href="index.html#about">About Us</a></li>
-                                    <li class="menu-item"><a href="index.html#works">Portfolio</a></li>
-                                    <li class="menu-item"><a href="index.html#blog">Blog</a></li>
-                                    <li class="menu-item"><a href="index.html#contact">Contact</a></li>
-                                </ul>
+                                <?php if ( has_nav_menu('menutop') ) wp_nav_menu( array('theme_location' => 'menutop', 'menu_class' => 'main-menu')); ?>
                             </div>
                         </nav>
                     </div>

@@ -1,3 +1,8 @@
+<?php
+/*
+Template Name: Page Contact
+*/
+?>
 <section id="contact" class="contact">
     <div class="container">
         <div class="row">
