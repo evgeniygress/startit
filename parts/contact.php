@@ -10,15 +10,15 @@ Template Name: Page Contact
                 <div class="contact-info">
                     <div class="contact-info-details">
                         <h4>Phone</h4>
-                        <p>+ 123 - 456 -789,   + 987 - 654 - 321</p>
+                        <p><?php the_field('phone', 'option'); ?></p>
                     </div>
                     <div class="contact-info-details">
                         <h4>Address</h4>
-                        <p>RK road, United states of America</p>
+                        <p><?php the_field('address', 'option'); ?></p>
                     </div>
                     <div class="contact-info-details">
                         <h4>E-mail</h4>
-                        <p>carrbyagency@gmail.com</p>
+                        <p><?php the_field('email', 'option'); ?></p>
                     </div>
                 </div>
             </div>
@@ -56,10 +56,21 @@ Template Name: Page Contact
                                     </div>
                                     <div class="col-md-6 col-lg-6">
                                         <ul class="top-social list-inline">
-                                            <li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="index.html#"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="index.html#"><i class="fa fa-skype"></i></a></li>
+                                            <?php if( have_rows('social-link', 'option') ): ?> 
+                                            <?php while( have_rows('social-link', 'option') ): the_row(); 
+                                                // vars
+                                                $facebookIcon = get_sub_field('facebook');
+                                                $googleIcon = get_sub_field('google');
+                                                $twitterIcon = get_sub_field('twitter');
+                                                $skypeIcon = get_sub_field('skype');
+                                            ?>
+                                            
+                                            <li><a href="<?php echo $facebookIcon; ?>"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="<?php echo $googleIcon; ?>"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a href="<?php echo $twitterIcon; ?>"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="<?php echo $skypeIcon; ?>"><i class="fa fa-skype"></i></a></li>
+                                            <?php endwhile; ?>
+                                            <?php endif; ?>
                                         </ul>
                                     </div>
                                 </div>

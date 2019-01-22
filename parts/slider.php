@@ -1,4 +1,4 @@
-<section id="slider" class="slider_1" style="background-image: url(<?php the_field('background-slider'); ?>);">
+<section id="slider" class="slider_1" style="background-image: url(<?php the_field('background-slider', 'option'); ?>);">
     <div class="slider">
         <div class="container">
             <div class="slide-content">

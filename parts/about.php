@@ -1,13 +1,14 @@
 <?php
 /*
 Template Name: Page About
+Template Post Type: about
 */
 ?>
 <section id="about" class="about">
     <div class="container">
         <div class="row">
-            <?php if( have_rows('about-first-row') ): ?> 
-            <?php while( have_rows('about-first-row') ): the_row(); 
+            <?php if( have_rows('about-first-row', 'option') ): ?> 
+            <?php while( have_rows('about-first-row', 'option') ): the_row(); 
                 // vars
                 $aboutTitle = get_sub_field('about-title');
                 $aboutTitleText = get_sub_field('about-title-text');
@@ -39,8 +40,8 @@ Template Name: Page About
             <?php endif; ?>
             <div class="col-lg-6 col-md-6">
                 <div class="about_content_box box-right">
-                    <?php if( have_rows('about-second-row') ): ?> 
-                    <?php while( have_rows('about-second-row') ): the_row(); 
+                    <?php if( have_rows('about-second-row', 'option') ): ?> 
+                    <?php while( have_rows('about-second-row', 'option') ): the_row(); 
                         // vars
                         $secondRowImg1 = get_sub_field('second-row-img1');
                         $secondRowImg2 = get_sub_field('second-row-img2');

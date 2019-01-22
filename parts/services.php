@@ -1,7 +1,8 @@
 <?php
-/*
-Template Name: Page Services
-*/
+/**
+    Template Name: services
+    Template Post Type: services  
+**/
 ?>
 <section id="services" class="services pt-10">
     <div class="container">
@@ -10,31 +11,30 @@ Template Name: Page Services
             <p><?php the_field('services-text'); ?></p>
         </div>
         <div class="row">
-            <?php if( have_rows('services-bloks') ): ?> 
-            <?php while( have_rows('services-bloks') ): the_row(); 
-                // vars
-                $count = get_sub_field('service-count');
-                $link = get_sub_field('service-link');
-                $linkDescription = get_sub_field('service-link-description');
-                $content = get_sub_field('service-description');
-            ?>           
-            <div class="col-lg-4 col-md-6">
-                <div class="servicebox">
-                    <div class="srv_desc">                       
-                        <?php if($count): ?>
-                           <h5 class="count"><?php echo $count; ?></h5>
-                        <?php endif; ?>
-                        <?php if($link): ?>
-                           <h4><a href="<?php echo $link; ?>"><?php echo $linkDescription; ?></a></h4>
-                        <?php endif; ?>
-                        <?php if($content): ?>
-                            <p><?php echo $content; ?></p>
-                        <?php endif; ?>
+            <?php
+            $posts = get_posts( array(
+                'numberposts' => 0,
+                'post_type'   => 'services',
+                'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+            ) );
+
+            foreach( $posts as $post ){
+                setup_postdata($post);
+                ?>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="servicebox">
+                            <div class="srv_desc">                       
+                                <h5 class="count"><?php the_excerpt(); ?></h5>
+                                <h4><a href="<php the_permalink() ?>"><?php the_title() ?></a></h4>
+                                <p><?php the_content(); ?></p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <?php endwhile; ?>
-            <?php endif; ?>
+            <?php
+            }
+
+            wp_reset_postdata(); // сброс
+            ?>
         </div>
     </div>
 </section>
