@@ -36,7 +36,7 @@
             foreach( $posts as $post ){
                 setup_postdata($post);
                 ?>
-                <div class="col-md-4 col-lg-3 <?php
+                <div class="col-md-4 col-lg-3 portfolio <?php
                     $term_list = wp_get_post_terms( get_the_ID(), 'portfolio', array('fields' => 'names') );
                         for ($i = 0; $i <= count($term_list); $i++)
                         {

@@ -1,7 +1,7 @@
 <?php
 /**
     Template Name: services
-    Template Post Type: services  
+    Template Post Type: post, page  
 **/
 ?>
 <section id="services" class="services pt-10">
@@ -25,7 +25,7 @@
                         <div class="servicebox">
                             <div class="srv_desc">                       
                                 <h5 class="count"><?php the_excerpt(); ?></h5>
-                                <h4><a href="<php the_permalink() ?>"><?php the_title() ?></a></h4>
+                                <h4><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
                                 <p><?php the_content(); ?></p>
                             </div>
                         </div>
