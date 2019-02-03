@@ -20,8 +20,13 @@ Template Post Type: post, page, article
                                     'posts_per_page' => '4',
                                     'paged'          => $paged,
                                );
-                               $blog_posts = new WP_Query( $args );
-                            if ($blog_posts->have_posts() ){ while ($blog_posts->have_posts() ){ $blog_posts->the_post(); ?>
+                               $blog_posts = query_posts( $args );
+                                if ( have_posts() ) : ?>
+                                 <?php
+                                // Start the Loop.
+                                while ( have_posts() ) : the_post();
+                                    get_template_part( 'template-parts/content', get_post_format() );
+                                    ?>   
                                 <article class="blog_post">
                                     <div class="post_header">
                                         <h4 class="post_cat">Category : <a href="<?php the_permalink() ?>"><?php the_terms( '', 'article' ) ?></a></h4>
@@ -43,12 +48,22 @@ Template Post Type: post, page, article
                                         </div>
                                     </div>
                                 </article>  
-                                <?php } //end while ?>
+                                <?php
+                                // End the loop.
+                                endwhile;
+                                ?>
+
                                 <div class="pagination-div">
-                                    <?php the_posts_pagination(); ?>
+                                    <div class="pagination">
+                                        <?php the_posts_pagination(array(
+                                            'prev_text'    => __(' <<'),
+                                            'next_text'    => __('>> '),
+                                        ) ); 
+                                        ?>
+                                    </div>
                                 </div>
-                            <?php } // end if 
-                            wp_reset_query();
+                            <?php
+                            endif;
                             ?>
                                 
                             </div>

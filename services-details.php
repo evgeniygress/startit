@@ -50,7 +50,7 @@ Template Post Type: post, page, services
                                                 <h4><?php the_title(); ?></h4>
                                             </div>
                                             <div class="service_post-text">
-                                                <p><?php the_content(); ?>.</p>
+                                                <p><?php the_content(); ?></p>
                                             </div>
                                         </div>
                                     </div>

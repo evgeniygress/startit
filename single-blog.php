@@ -61,9 +61,12 @@ Template Post Type: post, page, blog
                             <div class="row"><?php
                                  // Previous/next page navigation.
                                 the_posts_pagination( array(
-                                    'prev_text'          => __( 'Previous page', 'blog' ),
-                                    'next_text'          => __( 'Next page', 'blog' ),
-                                    'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'blog' ) . ' </span>',
+                                    'show_all'     => false,
+                                    'end_size'     => 1,
+                                    'mid_size'     => 1,
+                                    'prev_next'    => true,
+                                    'prev_text'    => __(' <<'),
+                                    'next_text'    => __('>> '),
                                 ) );
                                 ?>
                             </div>

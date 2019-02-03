@@ -13,18 +13,30 @@ Template Post Type: post, page, portfolio
                         <div class="portfolio-details-img">
                             <img src="images/portfolio/portfolio-details.jpg" alt="img">
                         </div>
-                        <div class="portfolio-details">
-                            <div class="full_content">
-                                <h6>Lorem ipsum dolor sit</h6>
-                                <h2 class="project_title">Mobile Interface for shoe.corp</h2>
-                                <p>Ut enim ad minima veniam, quis nostrum exercitationem corporate loorem commosequatur? Quis aut em vel eum iure veniam, quis nostruction dolorsequatur? Quis autem vel eum Quis autem vel eum iure veniam lorem quis nostru iure.Ut enim ad minima veniam, quis nostrum exercitationem corporate loo rem commosequatur? Quis aut em vel eum iure veniam, quis nostruction dolorsequatur? Quis autemvel eum Quis autem vel eum iure veniam lorem quis nostru iure.</p>
+                        <?php
+                        $posts = get_posts( array(
+                            'numberposts' => 1,
+                            'post_type'   => 'portfolio',
+                            'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                        ) );
 
-                                <p>Ut enim ad minima veniam, quis nostrum exercitationem corporate loorem commosequatur? Quis aut em vel eum iure veniam, quis nostruction dolorsequatur? Quis autem vel eum Quis autem vel eum iure veniam lorem quis nostru iure.</p>
-                            </div>
-                            <div class="portfolio-content-img">
-                                <img src="images/portfolio/inner-img.jpg" alt="img">
-                            </div>
-                        </div>
+                        foreach( $posts as $post ){
+                            setup_postdata($post);
+                            ?>
+                            <div class="portfolio-details">
+                                <div class="full_content">
+                                    <h6><?php the_title(); ?></h6>
+                                    <h2 class="project_title">Mobile Interface for shoe.corp</h2>
+                                    <p><?php the_content(); ?></p>
+                                </div>
+                                <div class="portfolio-content-img">
+                                    <?php the_post_thumbnail(); ?>
+                                </div>
+                            </div>    
+                        <?php
+                        }
+                        wp_reset_postdata(); // сброс
+                        ?>
                     </div>
                 </div>
             </section>
@@ -88,10 +100,20 @@ Template Post Type: post, page, portfolio
             <section id="testimonials" class="testimonials testimonials1">
                 <div class="container">
                     <div class="owl-carousel owl-theme testimonial_carousel">
+                        <?php
+                            $posts = get_posts( array(
+                                'numberposts' => 0,
+                                'post_type'   => 'testimonial',
+                                'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                            ) );
+
+                            foreach( $posts as $post ){
+                                setup_postdata($post);
+                                ?>
                         <div class="item">
                             <div class="testibox">
                                 <div class="testi-img">
-                                    <img src="images/testimonial/reviewer-1.png" alt="">
+                                    <?php the_post_thumbnail(); ?>
                                 </div>
                                 <div class="testi-content">
                                     <ul>
@@ -101,12 +123,16 @@ Template Post Type: post, page, portfolio
                                         <li><i class="ion-ios-star"></i></li>
                                         <li><i class="ion-ios-star"></i></li>
                                     </ul>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accntium oloremque laudantium, totam rem aperiam, eaque ipsa ab illo inventore veritatis et quasi rchitecto beatae vitae dictaexplicabo. Nemo enim voluptatem quia.Sed ut perspiciatis unde omnis iste natus error sit voluptatem </p>
-                                    <h4>Jeny Doe</h4>
-                                    <h6>CEO, Advertising Corp</h6>
+                                    <p><?php the_content(); ?></p>
+                                    <h4><?php the_title(); ?></h4>
+                                    <h6><?php the_category(); ?></h6>
                                 </div>
                             </div>
                         </div>
+                        <?php
+                        }
+                        wp_reset_postdata(); // сброс
+                        ?>
                         <div class="item">
                             <div class="testibox">
                                 <div class="testi-img">
